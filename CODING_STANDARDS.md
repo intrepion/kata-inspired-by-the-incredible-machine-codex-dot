@@ -1,2 +1,3 @@
 # Standards
+
 Use strict TypeScript. Keep the design editor, saved-data validation, physical simulation and DOM adapter separate. Test public behavior at those boundaries. Never serialize live physics bodies or accept unknown saved part kinds. Mutation of a run cannot mutate a design. Rendering must not decide victory. Browser frame time is bounded. No secrets, network services, tracking or paid APIs in the game.

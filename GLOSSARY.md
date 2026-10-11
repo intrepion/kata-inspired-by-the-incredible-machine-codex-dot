@@ -1,7 +1,9 @@
 # Contraption workshop
+
 A workshop for building small machines that deliver a ball through a physical chain reaction.
 
 ## Language
+
 **Design**: The arrangement of parts before a machine runs.
 _Avoid_: Save state, world
 

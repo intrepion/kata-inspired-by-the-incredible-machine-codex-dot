@@ -1,3 +1,52 @@
-import {it,expect} from 'vitest';import {decode} from '../src/storage';
-it('rejects corruption and future schemas',()=>{expect(decode('{bad').completed).toEqual([]);expect(decode('{"version":2}').designs).toEqual({})});
-it('validates saved inventories and duplicate identifiers without accepting simulation state',()=>{const p={id:'a',kind:'ramp',x:300,y:300,angle:25};const s=decode(JSON.stringify({version:1,completed:['first','first','unknown','sandbox'],designs:{first:[p,{...p,x:600},{...p,id:'bad',x:NaN},{...p,id:'alien',kind:'alien'}],sandbox:[{id:'same',kind:'steel',x:100,y:100,angle:0},{id:'same',kind:'steel',x:300,y:100,angle:0}]},muted:true}));expect(s.completed).toEqual(['first']);expect(s.designs.first).toHaveLength(1);expect(s.designs.sandbox).toHaveLength(1);expect(s.muted).toBe(true)});
+import { it, expect } from "vitest";
+import { decode } from "../src/storage";
+it("rejects corruption and future schemas", () => {
+  expect(decode("{bad").completed).toEqual([]);
+  expect(decode('{"version":2}').designs).toEqual({});
+});
+it("validates saved inventories and duplicate identifiers without accepting simulation state", () => {
+  const p = { id: "a", kind: "ramp", x: 300, y: 300, angle: 25 };
+  const s = decode(
+    JSON.stringify({
+      version: 1,
+      completed: ["first", "first", "unknown", "sandbox"],
+      designs: {
+        first: [
+          p,
+          { ...p, x: 600 },
+          { ...p, id: "bad", x: NaN },
+          { ...p, id: "alien", kind: "alien" },
+        ],
+        sandbox: [
+          { id: "same", kind: "steel", x: 100, y: 100, angle: 0 },
+          { id: "same", kind: "steel", x: 300, y: 100, angle: 0 },
+        ],
+      },
+      muted: true,
+    }),
+  );
+  expect(s.completed).toEqual(["first"]);
+  expect(s.designs.first).toHaveLength(1);
+  expect(s.designs.sandbox).toHaveLength(1);
+  expect(s.muted).toBe(true);
+});
+it("rejects IDs that could alter rendered markup and fixture identifiers", () => {
+  const s = decode(
+    JSON.stringify({
+      version: 1,
+      designs: {
+        sandbox: [
+          {
+            id: 'a" onclick="alert(1)',
+            kind: "steel",
+            x: 100,
+            y: 100,
+            angle: 0,
+          },
+          { id: "safe-1", kind: "steel", x: 300, y: 100, angle: 0 },
+        ],
+      },
+    }),
+  );
+  expect(s.designs.sandbox.map((p) => p.id)).toEqual(["safe-1"]);
+});

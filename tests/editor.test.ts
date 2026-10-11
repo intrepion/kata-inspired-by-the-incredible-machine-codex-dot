@@ -1,6 +1,40 @@
-import {it,expect} from 'vitest';
-import {Editor} from '../src/editor';
-import {levels} from '../src/levels';
-it('conserves inventory, rejects invalid placements, and restores history',()=>{const e=new Editor(levels[0]);expect(e.place('ramp',300,300,0)).toBe(true);expect(e.remaining('ramp')).toBe(0);expect(e.place('ramp',400,300,0)).toBe(false);e.undo();expect(e.remaining('ramp')).toBe(1);e.redo();expect(e.parts).toHaveLength(1);expect(e.move(e.parts[0].id,-20,100)).toBe(false);e.remove(e.parts[0].id);expect(e.remaining('ramp')).toBe(1)});
-it('rotation cannot intersect another solid part and selection survives an invalid command',()=>{const e=new Editor(levels[6]);e.place('ramp',300,300);const id=e.parts[0].id;e.place('ramp',300,325);expect(e.move(id,300,300,90)).toBe(false);expect(e.parts[0].angle).toBe(0);expect(e.move(id,300,230,25)).toBe(true);e.undo();expect(e.parts[0].angle).toBe(0);e.redo();expect(e.parts[0].angle).toBe(25)});
-it('touch cancel can leave a design untouched and deletion returns stock through history',()=>{const e=new Editor(levels[6]);e.place('steel',200,200);const design=structuredClone(e.parts);expect(e.move(e.parts[0].id,0,0)).toBe(false);expect(e.parts).toEqual(design);e.remove(e.parts[0].id);expect(e.remaining('steel')).toBe(8);e.undo();expect(e.parts).toEqual(design)});
+import { it, expect } from "vitest";
+import { Editor } from "../src/editor";
+import { levels } from "../src/levels";
+it("conserves inventory, rejects invalid placements, and restores history", () => {
+  const e = new Editor(levels[0]);
+  expect(e.place("ramp", 300, 300, 0)).toBe(true);
+  expect(e.remaining("ramp")).toBe(0);
+  expect(e.place("ramp", 400, 300, 0)).toBe(false);
+  e.undo();
+  expect(e.remaining("ramp")).toBe(1);
+  e.redo();
+  expect(e.parts).toHaveLength(1);
+  expect(e.move(e.parts[0].id, -20, 100)).toBe(false);
+  e.remove(e.parts[0].id);
+  expect(e.remaining("ramp")).toBe(1);
+});
+it("rotation cannot intersect another solid part and selection survives an invalid command", () => {
+  const e = new Editor(levels[6]);
+  e.place("ramp", 300, 300);
+  const id = e.parts[0].id;
+  e.place("ramp", 300, 325);
+  expect(e.move(id, 300, 300, 90)).toBe(false);
+  expect(e.parts[0].angle).toBe(0);
+  expect(e.move(id, 300, 230, 25)).toBe(true);
+  e.undo();
+  expect(e.parts[0].angle).toBe(0);
+  e.redo();
+  expect(e.parts[0].angle).toBe(25);
+});
+it("touch cancel can leave a design untouched and deletion returns stock through history", () => {
+  const e = new Editor(levels[6]);
+  e.place("steel", 200, 200);
+  const design = structuredClone(e.parts);
+  expect(e.move(e.parts[0].id, 0, 0)).toBe(false);
+  expect(e.parts).toEqual(design);
+  e.remove(e.parts[0].id);
+  expect(e.remaining("steel")).toBe(8);
+  e.undo();
+  expect(e.parts).toEqual(design);
+});

@@ -1,4 +1,5 @@
 # Level design rules
+
 Teach one new energy transfer at a time: gravity, spring energy, airflow, then handoffs and powered airflow. Give the player a small inventory and a clear basket objective. Starting fixtures are immutable; movable pieces never spawn during a run. Springs use a deterministic impulse, wind uses a bounded directional force, and both are arcade approximations rather than engineering models. Rubber has lower mass and more restitution than steel.
 
 Goals require a physical ball center inside the basket, low velocity for 30 steps, and the physical switch contact where supplied. Known solutions are regression inputs rather than runtime checks. A missing-stage negative test guards against accidental shortcuts in the intended chain reactions. All chapters are selectable to avoid a progression dead end. A failed experiment is bounded at 30 seconds and can always reset, including offscreen balls.
