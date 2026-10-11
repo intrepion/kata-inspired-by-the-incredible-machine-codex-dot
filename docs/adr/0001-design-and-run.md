@@ -1,0 +1,2 @@
+# Design and run are separate worlds
+A design owns all inventory and editing history. A run builds a new Matter.js world from a copied design and uses fixed 120 Hz steps; reset discards that world. Saving live bodies would make retries drift, allow inventory duplication and turn undo into a physics operation, so only designs persist. The trade-off is that pausing permits inspection but requires reset before editing.

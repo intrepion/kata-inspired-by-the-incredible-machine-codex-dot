@@ -1,0 +1,17 @@
+export type Kind='ramp'|'spring'|'fan'|'steel'|'rubber';
+export type Part={id:string;kind:Kind;x:number;y:number;angle:number};
+export type Level={id:string;title:string;subtitle:string;lesson:string;hint:string;inventory:Partial<Record<Kind,number>>;fixed:Part[];target:{x:number;y:number};switch?:{x:number;y:number};solution:Omit<Part,'id'>[]};
+export const W=960,H=600;
+export const sizes:Record<Kind,[number,number]>={ramp:[180,16],spring:[90,20],fan:[60,60],steel:[32,32],rubber:[32,32]};
+export const names:Record<Kind,string>={ramp:'Copper ramp',spring:'Spring pad',fan:'Wind fan',steel:'Steel marble',rubber:'Rubber ball'};
+const p=(kind:Kind,x:number,y:number,angle=0)=>({kind,x,y,angle});
+const fixed=(parts:Omit<Part,'id'>[])=>parts.map((v,i)=>({...v,id:`fixed-${i}`}));
+export const levels:Level[]=[
+{id:'first',title:'A little nudge',subtitle:'01 / GRAVITY',lesson:'Guide the steel marble into the brass basket. A sloping ramp turns a fall into a roll.',hint:'Catch the marble below its starting point. Slope the ramp down toward the basket.',inventory:{ramp:1},fixed:fixed([p('steel',240,100)]),target:{x:495,y:520},solution:[p('ramp',270,290,25)]},
+{id:'bounce',title:'Up, up & away',subtitle:'02 / ELASTIC ENERGY',lesson:'The basket is above the floor. Catch the falling marble with a spring and send it back up.',hint:'A spring launches along its arrow. Tilt it slightly toward the basket.',inventory:{spring:1},fixed:fixed([p('steel',260,100)]),target:{x:600,y:280},solution:[p('spring',260,480,25)]},
+{id:'wind',title:'A breath of invention',subtitle:'03 / AIRFLOW',lesson:'Wind can bend a falling path. Aim a fan to carry the light rubber ball to the basket.',hint:'Put the fan to the left of the falling ball. Its cone reaches 300 pixels; rubber responds more than steel.',inventory:{fan:1},fixed:fixed([p('rubber',280,100)]),target:{x:440,y:520},solution:[p('fan',180,260,0)]},
+{id:'relay',title:'The winding road',subtitle:'04 / TWO-STAGE TRANSFER',lesson:'Bridge the gap with two ramps. Let gravity do the handoff from one surface to the next.',hint:'The first ramp guides right; catch that roll on a second lower ramp, also sloping right.',inventory:{ramp:2},fixed:fixed([p('steel',170,80)]),target:{x:560,y:520},solution:[p('ramp',220,220,25),p('ramp',360,380,25)]},
+{id:'power',title:'Wake the workshop',subtitle:'05 / SWITCH & WIND',lesson:'Touch the green switch, then reach the basket. The switch powers your fan for the rest of the run.',hint:'The switch sits in the falling path. A fan below it can steer the rubber ball once the switch lights.',inventory:{fan:1},fixed:fixed([p('rubber',280,80)]),switch:{x:280,y:230},target:{x:410,y:520},solution:[p('fan',180,300)]},
+{id:'final',title:'The grand delivery',subtitle:'06 / CHAIN REACTION',lesson:'Roll onto the switch, drop into the breeze, and deliver the rubber ball. Every stage has to cooperate.',hint:'Use the ramp to reach the switch at the right. Place the fan below the switch to finish the delivery.',inventory:{ramp:1,fan:1},fixed:fixed([p('rubber',180,80)]),switch:{x:360,y:230},target:{x:500,y:520},solution:[p('ramp',230,200,25),p('fan',230,360)]},
+{id:'sandbox',title:'Your curious machine',subtitle:'FREE / THE WORKSHOP',lesson:'No brief, no score. Build a machine, press run, and see what happens. All parts are yours to explore.',hint:'Try a falling steel marble colliding with a rubber ball, or a spring feeding a ramp.',inventory:{ramp:12,spring:6,fan:6,steel:8,rubber:8},fixed:[],target:{x:800,y:520},solution:[]}
+];
