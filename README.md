@@ -39,3 +39,7 @@ The 12 regression tests cover inventory, bounds/intersections, rotation/history,
 Matter.js provides rigid-body contacts, gravity and differing ball properties. Springs apply an arcade impulse, fans apply directional force, and the power switch uses circular contact distance. These are deterministic gameplay approximations at 120 Hz, not an engineering simulation. No fluids, ropes, motors, gears or seesaws are modeled. Ball escape is allowed during experiments; reset always recovers the design. Runs stop after 30 seconds. Repeatability is regression-tested in the supplied engine/runtime, not guaranteed bit-for-bit across every browser or future engine version.
 
 Real Mac Chrome was tested. Responsive layout and touch/multi-touch input were simulated in that browser; physical phones/tablets, Safari, Firefox, screen-reader output and cross-browser timing were not tested.
+
+## Play online
+
+[Play the hosted game](https://intrepion.github.io/kata-inspired-by-the-incredible-machine-codex-dot/)
