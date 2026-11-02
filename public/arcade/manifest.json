@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "gameId": "kata-inspired-by-the-incredible-machine-codex-dot",
+  "playUrl": "https://intrepion.github.io/kata-inspired-by-the-incredible-machine-codex-dot/",
+  "screenshots": [
+    {
+      "path": "arcade/screenshots/view-01.jpg",
+      "sha256": "48aaa984ed92501995665f528a2d4b8f33a6fe0f872e27f3d5cf4f80e4f0ed10",
+      "alt": "Gameplay capture 1",
+      "provenance": {
+        "kind": "existing_repository_capture",
+        "sourcePath": "docs/qa/airflow.jpg",
+        "deployedBuild": null,
+        "captureDate": null
+      }
+    },
+    {
+      "path": "arcade/screenshots/view-02.jpg",
+      "sha256": "e528db71d64af8a4374d38330f4a0a32c4bd85bf76daf37dfb3b5bd89f437ee3",
+      "alt": "Gameplay capture 2",
+      "provenance": {
+        "kind": "existing_repository_capture",
+        "sourcePath": "docs/qa/sandbox.jpg",
+        "deployedBuild": null,
+        "captureDate": null
+      }
+    }
+  ]
+}
