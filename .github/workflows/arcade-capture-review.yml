@@ -28,7 +28,7 @@ jobs:
         env:
           CAPTURE_OUTPUT: capture-output
         run: |
-          export GAME_SOURCE_COMMIT="$(git rev-parse HEAD^)"
+          export GAME_SOURCE_COMMIT="6306d4f6819d5e045fbbb781f99e7af8422f99b3"
           python3 -m http.server 4242 --bind 127.0.0.1 --directory capture-site > /tmp/copper-cogs-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
