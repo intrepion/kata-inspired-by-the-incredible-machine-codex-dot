@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "79e08429610ab0405b39feaf3e6523cb1664f2e2",
+  "sourceCommit": "6306d4f6819d5e045fbbb781f99e7af8422f99b3",
+  "runId": "41415791622",
+  "url": "http://127.0.0.1:4242/",
+  "inputs": {
+    "index.html": "eef5fdcb9e78b47fddba6afd71fdaaed978edfa5c7b91aa21f1a02410c8d0136",
+    "assets/dm-sans-latin-400-normal-BwCSEQnW.woff": "38702875fe179437d200e7ba6f7fab4d497ffe48117ef332029b2081751186ad",
+    "assets/dm-sans-latin-400-normal-CW0RaeGs.woff2": "4ab51eb2cd7305d177187908d6397474d4520663f6c6e572feb0a64f4fa80006",
+    "assets/dm-sans-latin-600-normal-Aqo67rzb.woff2": "6bb2b2645ba5eeaecf56322c543fa3a75b87b927977b9c03b1dabc4205089120",
+    "assets/dm-sans-latin-600-normal-BmdmIIQ2.woff": "e7351257e49400eff05aca30a2007289194a900860d30c30770d8b8732897564",
+    "assets/dm-sans-latin-700-normal-CUSSCpQX.woff": "af422a448ac00679a8dbb13532db3616829c5a35b58d3eeea5903ce17ad2e36a",
+    "assets/dm-sans-latin-700-normal-DvUfVpUG.woff2": "35c5efa0e5daa52ee5c6500f5be354bf751fb65c4e49e1d6806c6eb5883e8fe9",
+    "assets/fraunces-latin-500-normal-BTR4KCeb.woff": "3f090b71356567fa4f75f0beeff74d38196a8b0f99bf089cce4954910442bfbf",
+    "assets/fraunces-latin-500-normal-DnGCNyPD.woff2": "7975c1ef7caf89d0606dd985d35abe31a619c19262cf13f5a05938cc68fb27b2",
+    "assets/fraunces-latin-600-normal-BFCDtZfi.woff2": "3a1de7711d147bad4422825045f87597fd77cca72e7c96d3b0a81735d00dda82",
+    "assets/fraunces-latin-600-normal-DL5QCzvS.woff": "d78e988f844f474ce9b1cc10c72501add6c5056763bfe83ff2a8e2fcb6708ad0",
+    "assets/index-BgUm3emM.js": "270887e7125437629e287a1b700de9a4ae8dda8ed97a06419677a16147d622c4",
+    "assets/index-lvwYKKyW.css": "ccd565aa9b8461df79b32044ecb564262921075142269a84b80f51b794b4c6e2"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "screenshots": ["copper-cogs-01.png", "copper-cogs-02.png"]
+}
